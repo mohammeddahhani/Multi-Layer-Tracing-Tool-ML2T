@@ -4,8 +4,8 @@ A ML2T is a multi-layer tracing tool to analyse data transmission of the MAC and
 For now, only uniderectional TCP traffic is supported.
 
 # Requirement
-ML2T requires a valid and pre-processed .pcap file. This file should obey the following rules:
-### Strucutre
+Our tool requires a vailde capture file which can produced using `tcpdump`. In case of a wireless network, monitor mode should be activated to capture the transient trafic.
+
 The capture file should start with a TCP data segment, excluding TCP handshake segments (i.e. syn, syn-ack, ack)
 This can be done by using wireshark build-in filtering: 
 - If the starting TCP segment is captured at t = 49.1 seconds, `frame.time_relative >= 49.1` extracts all the trafic starting t= 49.1 s.
