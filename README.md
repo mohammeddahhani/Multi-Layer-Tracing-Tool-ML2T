@@ -11,8 +11,6 @@ This can be done by using wireshark build-in filtering:
 - If the starting TCP segment is captured at t = 49.1 seconds, `frame.time_relative >= 49.1` extracts all the trafic starting t= 49.1 s.
 - `file -> Export specified`
 
-## Content
-
 # Usage
 `./extract capture.pcap` To extract necessary data
 For plotting:
