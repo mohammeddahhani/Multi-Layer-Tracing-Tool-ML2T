@@ -1,0 +1,12 @@
+0.863: 2 TCP acks  
+La couche MAC l'a retransmis: Le premier ack tcp envoyé n'a pas été acquitté par la couche MAC et a donc été retransmis.
+D'où le faux dup ack
+
+
+22.132382: TCP envoie 6 segement qui seront par la suite acquitté.
+		En suite, TCP retransmet à nouveau les 6 segements !!!!!
+		
+51.629484: même phénomène
+
+
+143.96 : retx en rafale (MAC)

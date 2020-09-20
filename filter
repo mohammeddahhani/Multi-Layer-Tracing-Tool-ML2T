@@ -1,0 +1,7 @@
+To filter only IEEE 802.11ad control frames: beacons and SSW frames
+
+
+(wlan.fc.type_subtype == 0x0169 || wlan.fc.type_subtype == 0x0030 || wlan.fc.type_subtype == 0x0168 || wlan.fc.type_subtype == 0x016a )  
+
+
+## !wlan.ra == 04:ce:14:0a:b1:94 && !wlan.ra == 04:ce:14:0b:7c:d2
