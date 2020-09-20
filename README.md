@@ -10,15 +10,16 @@ This can be done by using wireshark build-in filtering:
 - Use `file -> Export specified Packets ...` to save the resulting filtered trafic to a new file.
 
 # Usage
-`./extract capture.pcap` To extract necessary data
+`./extract capture.pcap` To extract necessary data.
+
 For plotting:
 - `python plot.py --to-segs` to plot mac frames and their associated block ack that encapsulate TCP segments
 - or `python plot.py --to-acks` to plot mac frames and their associated block ack that encapsulate TCP acks
 
 The following variables in `plot.py` can be used to shift the TCP or MAC traffic in order to have one close to the other:
-- tcp_shift
-- mac_shift
-- mac_scale 
+- `tcp_shift`
+- `mac_shift`
+- `mac_scale`
 
 # Folder's description
 ML2T take as an input a pre-processed tcpdump capture (.pcap) to produces a set of data which can be used -- e.g. using python -- to create a Time/Sequence plot.
