@@ -37,10 +37,10 @@ Files and folders relevent to how ML2T works are described bellow:
 # Limitations
 For now, only uniderectional TCP traffic is supported since a biderectionnal trafic is messy to visualize on the same graph.
 In case the captured TCP trafic is bidirectionnal, one could extract 2 unidirectional trafics, one in each direction, using wireshark build-in regex then apply 
-our tool
+our tool.
 
-By default only IEEE 802.11ad strafic is supported. This can be improved by changing hex values that identify specific IEEE 802.11 frame types.
-Here is a non-exhaustive list of MAC ids (on-going progress):
+By default only IEEE 802.11ad strafic is supported. This can be improved by changing hex values that identify specific IEEE 802.11 frame types (see `extract.sh`).
+Here is a non-exhaustive list of MAC ids (on-going work):
 - __IEEE 802.11ad__:
   - data frames: `wlan[0:1]==0x88`
   - block acks: `wlan[0:1] == 0x94 && wlan[16:1] == 0x05`
@@ -57,7 +57,8 @@ Here is a non-exhaustive list of MAC ids (on-going progress):
   - data frames: 
   - acks: 
 
-Another limitation is the `moduloToLinear()` function in `plot.py`. More robust transformations should be handeled
+Another limitation is the `moduloToLinear()` function in `plot.py`. 
+More robust linear transformations should be added.
 
 
 
