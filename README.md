@@ -1,5 +1,5 @@
 # Introduction
-ML2T is a multi-layer tracing tool to analyse data exchange (unidirectional TCP connexion) over a wirelss link at both the TCP and MAC layer on the same graph. 
+ML2T is a multi-layer tracing tool to analyse data exchange (unidirectional TCP connexion) over a 60GHz mmWave link at both the TCP and MAC layer on the same graph. 
 
 # Requirement
 Our tool requires a valid capture file which can produced using `tcpdump`. Monitor mode is required to capture data.
