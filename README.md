@@ -16,8 +16,8 @@ Use `./extract xxxxx.pcap` to extract necessary information from your pcap file.
 
 For plotting:
 - `python plot.py --h`
-- `python plot.py --encap-segs` to plot mac frames and their associated block ack that encapsulate TCP segments
-- or `python plot.py --encap-acks` to plot mac frames and their associated block ack that encapsulate TCP acks
+- `python plot.py --encap-segs` or `--s` to plot mac frames and their associated block ack that encapsulate TCP segments
+- or `python plot.py --encap-acks` or `--a` to plot mac frames and their associated block ack that encapsulate TCP acks
 
 The following variables in `plot.py` can be used to shift the TCP or MAC traffic in order to have one close to the other:
 - `tcp_shift`
