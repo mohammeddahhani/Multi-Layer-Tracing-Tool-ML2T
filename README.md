@@ -61,7 +61,7 @@ Here is a non-exhaustive list of MAC ids (on-going work):
   - acks: 
 
 Another limitation is the `moduloToLinear()` function in `plot.py`. 
-More robust linear transformations should be added.
+The current one does not make a difference between a retransmitted frame and a new frame whose sequence number modulo [4096] is lower than the frame before it.
 
 
 
