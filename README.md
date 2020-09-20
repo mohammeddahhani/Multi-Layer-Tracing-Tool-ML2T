@@ -5,7 +5,7 @@ ML2T is a multi-layer tracing tool to analyse data exchange (unidirectional TCP 
 Our tool requires a valid capture file which can produced using `tcpdump`. Monitor mode is required to capture data.
 
 The capture file should start with a TCP data segment, excluding TCP handshake segments (i.e. syn, syn-ack, ack)
-This can be done by using wireshark build-in filtering: 
+This can be done by using `wireshark` build-in filtering: 
 - For example, if the starting TCP segment is captured at t = 49.1 seconds, `frame.time_relative >= 49.1` extracts all the trafic starting t= 49.1 s.
 - Use `file -> Export specified Packets ...` to save the resulting filtered trafic to a new file.
 
