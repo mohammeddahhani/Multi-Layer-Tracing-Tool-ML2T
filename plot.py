@@ -1,6 +1,7 @@
 import plotly.plotly as py
 import plotly.tools as tls
 import numpy as np
+import argparse
 
 import matplotlib.pyplot as plt; plt.rcdefaults()
 
@@ -50,15 +51,21 @@ back= []
 #			 #
 ##############
 
-if len(sys.argv) < 4:
-	print ("python plot.py 'seg' 'ack' 'frame' 'back' ")
-	exit(1)
 
-tcp_seg= sys.argv[1]
-tcp_ack= sys.argv[2]
-mac_fr= sys.argv[3]
-mac_back= sys.argv[4]
+parser 	= argparse.ArgumentParser()
+parser.add_argument("--s", "--plot-seg", 	  help="Plot graphs", action="store_true")
+parser.add_argument("--a", "--plot-ack", 	  help="Plot graphs", action="store_true")
 
+args 	= parser.parse_args()
+
+tcp_seg= 'sequences/seg_tcpsnd.seq'
+tcp_ack= 'sequences/ack_tcprcv.seq'
+if args.s:
+	mac_fr= 'sequences/frame_tcpsnd.seq'
+	mac_back= 'sequences/frame_tcprcv.seq'
+elif args.a:
+	mac_fr= 'sequences/frame_tcprcv.seq'	
+	mac_back= 'sequences/frame_tcpsnd.seq'
 
 
 ################
