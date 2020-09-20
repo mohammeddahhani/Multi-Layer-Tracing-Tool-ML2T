@@ -13,14 +13,18 @@ Needs to be changed
 
 Only handles a special case
 """
-def moduloToLinear(fr):
-	zero=False
-	for i in range(len(fr)):
-		if(fr[i]==0):
-			zero=True
-		if(zero):
-			fr[i]+=1077
-	return fr
+def moduloToLinear(frame, linear=False):
+	if linear:
+		curr = frame[0]
+		prev = frame[0]
+		for seq in range(1, len(frame)):
+			curr = frame[seq]
+			if(curr < prev and prev - curr > 2):
+				frame[seq] = curr + prev
+				#print(t[seq], seq,  prev, curr, frame[seq])
+			prev = frame[seq]
+			seq = seq + 1
+	return frame
 
 
 """
@@ -53,8 +57,9 @@ back= []
 
 
 parser 	= argparse.ArgumentParser()
-parser.add_argument("--s", "--plot-seg", 	  help="Plot graphs", action="store_true")
-parser.add_argument("--a", "--plot-ack", 	  help="Plot graphs", action="store_true")
+parser.add_argument("--s", "--encap-segs", help="Plot mac frames that encapsulate tcp segments", action="store_true")
+parser.add_argument("--a", "--encap-acks", help="Plot mac frames that encapsulate tcp acks", action="store_true")
+parser.add_argument("--linear", help="Apply linear transformation on mac sequences. Default is instead mod [4096]", action="store_true")
 
 args 	= parser.parse_args()
 
@@ -81,6 +86,7 @@ print(tcp_seg)
 for l in lines:
 	if(float(l.split('\t')[1]) <= 1):
 		lines.remove(l)
+
 for line in lines:
 	t1.append(float(line.split('\t')[0]))
 	seg.append(float(line.split('\t')[1]))
@@ -131,8 +137,8 @@ ack= np.array(ack)
 back= np.array(back)
 frame= np.array(frame)	
 
-frame=moduloToLinear(frame)
-back=moduloToLinear(back)
+frame=moduloToLinear(frame, args.linear)
+back=moduloToLinear(back, args.linear)
 
 ack=fixAckSeq(t2, ack)
 
@@ -152,12 +158,12 @@ off=200
 
 tcp_shift = 205000
 mac_shift = 300000
-mac_scale = 500
+mac_scale = 1
 
 plt.plot(t1[t1<off], 	 seg[t1<off]+ tcp_shift , 'bD', label="TcpData")
 plt.plot(t2[t2<off], 	 ack[t2<off]+ tcp_shift , 'ro', label="TcpAck")	
-plt.plot(t3[t3<off], mac_scale*frame[t3<off]-mac_shift, 'kD', label="MacData")
-plt.plot(t4[t4<off], mac_scale*back [t4<off]-mac_shift, 'yo', label="MacBack")
+plt.plot(t3[t3<off], mac_scale*frame[t3<off]+mac_shift, 'kD', label="MacData")
+plt.plot(t4[t4<off], mac_scale*back [t4<off]+mac_shift, 'yo', label="MacBack")
 
 
 
