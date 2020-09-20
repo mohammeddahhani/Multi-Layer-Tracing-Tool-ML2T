@@ -10,7 +10,9 @@ This can be done by using wireshark build-in filtering:
 - Use `file -> Export specified Packets ...` to save the resulting filtered trafic to a new file.
 
 # Usage
-Use `./extract capture.pcap` to extract necessary information from the pcap file.
+The `capture.pcap` given in this repository is an example of a partial capture obtained using TP-Link Talon AD6200.
+
+Use `./extract xxxxx.pcap` to extract necessary information from your pcap file.
 
 For plotting:
 - `python plot.py --h`
