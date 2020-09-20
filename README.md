@@ -2,7 +2,7 @@
 ML2T is a multi-layer tracing tool to analyse data exchange (unidirectional TCP connexion) over a wirelss link at both the TCP and MAC layer on the same graph. 
 
 # Requirement
-Our tool requires a vailde capture file which can produced using `tcpdump`. Wireless TCP traffic can be captured using `tcpdump` on a monitor mode enabled node?
+Our tool requires a valid capture file which can produced using `tcpdump`. Monitor mode is required to capture data.
 
 The capture file should start with a TCP data segment, excluding TCP handshake segments (i.e. syn, syn-ack, ack)
 This can be done by using wireshark build-in filtering: 
@@ -10,11 +10,12 @@ This can be done by using wireshark build-in filtering:
 - Use `file -> Export specified Packets ...` to save the resulting filtered trafic to a new file.
 
 # Usage
-`./extract capture.pcap` To extract necessary data.
+Use `./extract capture.pcap` to extract necessary information from the pcap file.
 
 For plotting:
-- `python plot.py --to-segs` to plot mac frames and their associated block ack that encapsulate TCP segments
-- or `python plot.py --to-acks` to plot mac frames and their associated block ack that encapsulate TCP acks
+- `python plot.py --h`
+- `python plot.py --encap-segs` to plot mac frames and their associated block ack that encapsulate TCP segments
+- or `python plot.py --encap-acks` to plot mac frames and their associated block ack that encapsulate TCP acks
 
 The following variables in `plot.py` can be used to shift the TCP or MAC traffic in order to have one close to the other:
 - `tcp_shift`
